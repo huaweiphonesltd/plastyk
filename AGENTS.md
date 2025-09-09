@@ -1,6 +1,6 @@
 # Overview
 
-This project is a simple static site used to host information and promo for the club night Plastyk. It uses Typescript and Vite. It does not use Tailwind or React - it is at the discretion of the developer to choose a system for CSS styling (other than Tailwind).
+This project is a simple static site used to host information and promo for the club night Plastyk. It uses Typescript and Vite. It uses Tailwind for styling but does not use React.
 
 ## Tooling
 
@@ -10,7 +10,7 @@ This project is a simple static site used to host information and promo for the 
 - Vite
 - NOT React - the site is not complex enough for this, we only need static content
 - HTML
-- CSS - NOT Tailwind, use a more traditional CSS setup for this.
+- CSS - Tailwind
 
 ## Assets
 
