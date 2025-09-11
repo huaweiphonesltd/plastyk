@@ -1,24 +1,17 @@
 {
   "upcoming": [
     {
-      "date": "September 11 2025",
+      "date": "October 3 2025",
       "venue": "M.O.T.",
       "lineup": ["estoc", "alo3", "karlie marx", "harietta"],
       "tba": false
     },
     {
-      "date": "November 12 2025",
+      "date": "December 19 2025",
       "venue": "M.O.T.",
       "lineup": [""],
       "tba": true
     }
   ],
-  "past": [
-    {
-      "date": "May 1 2025",
-      "venue": "M.O.T.",
-      "lineup": ["test dj", "honey dijon", "fingerblast", "thempress"],
-      "tba": false
-    }
-  ]
+  "past": []
 }
