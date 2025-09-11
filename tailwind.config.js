@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./index.html",
+    "./src/index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
@@ -18,6 +18,7 @@ export default {
         'plastyk-pink-dark': '#e65a8a',
       },
       fontFamily: {
+        'futura': ['"Futura Condensed Extra Bold"', '"Inter"', 'sans-serif'],
         'inter': ['"Inter"', 'sans-serif'],
       },
     },

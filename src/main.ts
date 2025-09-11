@@ -35,7 +35,7 @@ class PlastykApp {
         }
 
         private setupSmoothScrolling(): void {
-                const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+                const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
 
                 navLinks.forEach(link => {
                         link.addEventListener('click', (e) => {
@@ -44,8 +44,10 @@ class PlastykApp {
                                 const targetElement = document.getElementById(targetId || '');
 
                                 if (targetElement) {
-                                        const headerHeight = document.querySelector('.header')?.clientHeight || 0;
-                                        const targetPosition = targetElement.offsetTop - headerHeight;
+                                        const header = document.querySelector('header');
+                                        const headerHeight = header?.clientHeight || 0;
+                                        // Add extra padding to ensure content isn't hidden behind header
+                                        const targetPosition = targetElement.offsetTop - headerHeight - 20;
 
                                         window.scrollTo({
                                                 top: targetPosition,
@@ -57,7 +59,7 @@ class PlastykApp {
         }
 
         private setupNavigation(): void {
-                const header = document.querySelector('.header') as HTMLElement;
+                const header = document.querySelector('header') as HTMLElement;
 
                 window.addEventListener('scroll', () => {
                         if (window.scrollY > 100) {

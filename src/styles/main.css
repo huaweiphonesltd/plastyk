@@ -1,5 +1,13 @@
-/* Custom Google Fonts import */
+/* Fallback Google Fonts import */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+/* Custom Font: Futura Condensed Extra Bold */
+@font-face {
+  font-family: "Futura Condensed Extra Bold";
+  src: url("/assets/font/Futura Condensed Extra Bold.woff") format("woff");
+  font-style: normal;
+  font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;
@@ -32,7 +40,20 @@
     @apply w-full h-full object-cover opacity-30;
   }
 
+  .btn-pink {
+    @apply bg-plastyk-pink text-plastyk-white border-none px-10 py-4 text-xl font-semibold rounded-full cursor-pointer transition-all duration-300 uppercase tracking-wider hover:-translate-y-0.5 hover:shadow-lg hover:shadow-plastyk-pink/40;
+  }
+
   .gradient-button {
+    @apply bg-gradient-to-r from-plastyk-red to-plastyk-pink text-plastyk-white border-none px-10 py-4 text-xl font-semibold rounded-full cursor-pointer transition-all duration-300 uppercase tracking-wider hover:-translate-y-0.5 hover:shadow-lg hover:shadow-plastyk-pink/40;
+  }
+
+  /* some more possible buttons */
+  .gradient-button-2 {
+    @apply bg-gradient-to-r from-plastyk-red to-plastyk-pink text-plastyk-white border-none px-10 py-4 text-xl font-semibold rounded-full cursor-pointer transition-all duration-300 uppercase tracking-wider hover:-translate-y-0.5 hover:shadow-lg hover:shadow-plastyk-pink/40;
+  }
+
+  .gradient-button-3 {
     @apply bg-gradient-to-r from-plastyk-red to-plastyk-pink text-plastyk-white border-none px-10 py-4 text-xl font-semibold rounded-full cursor-pointer transition-all duration-300 uppercase tracking-wider hover:-translate-y-0.5 hover:shadow-lg hover:shadow-plastyk-pink/40;
   }
 
