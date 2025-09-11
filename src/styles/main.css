@@ -9,6 +9,22 @@
   font-display: swap;
 }
 
+/* Custom Font: Times New Roman */
+@font-face {
+  font-family: "Times New Roman";
+  src: url("https://db.onlinewebfonts.com/t/32441506567156636049eb850b53f02a.eot");
+  src: url("https://db.onlinewebfonts.com/t/32441506567156636049eb850b53f02a.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/32441506567156636049eb850b53f02a.woff2")
+      format("woff2"),
+    url("https://db.onlinewebfonts.com/t/32441506567156636049eb850b53f02a.woff")
+      format("woff"),
+    url("https://db.onlinewebfonts.com/t/32441506567156636049eb850b53f02a.ttf")
+      format("truetype"),
+    url("https://db.onlinewebfonts.com/t/32441506567156636049eb850b53f02a.svg#Times New Roman")
+      format("svg");
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -24,6 +40,7 @@
   --color-plastyk-red-light: #c73a40;
   --color-plastyk-pink-light: #ff9bc4;
   --color-plastyk-pink-dark: #e65a8a;
+  --color-plastyk-blue: #0000ff;
 }
 
 /* Custom component styles using Tailwind utilities */
@@ -40,28 +57,46 @@
     @apply w-full h-full object-cover opacity-30;
   }
 
-  .btn-pink {
-    @apply bg-plastyk-pink text-plastyk-white border-none px-10 py-4 text-xl font-semibold rounded-full cursor-pointer transition-all duration-300 uppercase tracking-wider hover:-translate-y-0.5 hover:shadow-lg hover:shadow-plastyk-pink/40;
+  .link {
+    @apply text-plastyk-blue underline;
   }
 
-  .gradient-button {
-    @apply bg-gradient-to-r from-plastyk-red to-plastyk-pink text-plastyk-white border-none px-10 py-4 text-xl font-semibold rounded-full cursor-pointer transition-all duration-300 uppercase tracking-wider hover:-translate-y-0.5 hover:shadow-lg hover:shadow-plastyk-pink/40;
+  .btn {
+    @apply text-plastyk-blue border-none py-4 text-2xl font-serif rounded-full cursor-pointer transition-all duration-300  tracking-wider hover:-translate-y-0.5 hover:shadow-lg hover:shadow-plastyk-pink/40 w-24;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 4px;
+    display: inline-flex;
+    align-items: baseline;
+    justify-content: center;
+    white-space: nowrap;
+    font-family: "Times New Roman", "Times", serif;
   }
 
-  /* some more possible buttons */
-  .gradient-button-2 {
-    @apply bg-gradient-to-r from-plastyk-red to-plastyk-pink text-plastyk-white border-none px-10 py-4 text-xl font-semibold rounded-full cursor-pointer transition-all duration-300 uppercase tracking-wider hover:-translate-y-0.5 hover:shadow-lg hover:shadow-plastyk-pink/40;
+  .btn i {
+    margin-right: 0.5rem;
+    display: inline-block !important;
+    vertical-align: baseline !important;
+    line-height: inherit !important;
+    font-size: inherit !important;
+    height: auto !important;
+    width: auto !important;
   }
 
-  .gradient-button-3 {
-    @apply bg-gradient-to-r from-plastyk-red to-plastyk-pink text-plastyk-white border-none px-10 py-4 text-xl font-semibold rounded-full cursor-pointer transition-all duration-300 uppercase tracking-wider hover:-translate-y-0.5 hover:shadow-lg hover:shadow-plastyk-pink/40;
+  /* Force include classes for dynamic events */
+  .event-item {
+    @apply py-4 border-gray-300 rounded bg-white text-black font-serif;
   }
 
-  .event-card {
-    @apply bg-plastyk-black border border-plastyk-red rounded-lg p-8 transition-all duration-300 hover:-translate-y-1 hover:border-plastyk-pink hover:shadow-lg hover:shadow-plastyk-pink/20;
+  .event-date {
+    @apply text-xl font-bold mb-2 text-black;
   }
 
-  .section-title {
-    @apply text-center text-plastyk-white mb-12 text-4xl font-semibold;
+  .event-venue {
+    @apply text-lg mb-2 text-black;
+  }
+
+  .event-lineup {
+    @apply text-base text-black;
   }
 }

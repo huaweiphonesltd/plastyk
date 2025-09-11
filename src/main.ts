@@ -1,134 +1,130 @@
 // Main TypeScript entry point for Plastyk website
 
-interface EventData {
-        date: string;
-        title: string;
-        genre: string;
-        time: string;
+export type EventListing = {
+  upcoming: Event[];
+  past: Event[];
+};
+
+interface Event {
+  date: string;
+  venue: string;
+  lineup?: string[];
+  tba: boolean;
 }
 
 class PlastykApp {
-        private events: EventData[] = [
-                {
-                        date: "FRI 15",
-                        title: "Plastyk Night",
-                        genre: "Electronic • House • Techno",
-                        time: "10PM - 4AM"
-                },
-                {
-                        date: "SAT 23",
-                        title: "Special Guest",
-                        genre: "Deep House • Progressive",
-                        time: "9PM - 5AM"
-                }
-        ];
+  constructor() {}
 
-        constructor() {
-                this.init();
-        }
+  events: EventListing = {
+    upcoming: [],
+    past: [],
+  };
 
-        private init(): void {
-                this.setupSmoothScrolling();
-                this.setupNavigation();
-                this.setupEventCards();
-                this.setupAnimations();
-        }
+  async fetchEvents() {
+    try {
+      const response = await fetch("/assets/events.json");
+      this.events = await response.json();
+    } catch (error) {
+      console.error("Error fetching events:", error);
+    }
 
-        private setupSmoothScrolling(): void {
-                const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+    const upcomingEventsContainer = document.getElementById("upcoming-events-container");
+    if (!upcomingEventsContainer) {
+      console.error("Events container not found!");
+      return;
+    }
 
-                navLinks.forEach(link => {
-                        link.addEventListener('click', (e) => {
-                                e.preventDefault();
-                                const targetId = link.getAttribute('href')?.substring(1);
-                                const targetElement = document.getElementById(targetId || '');
+    upcomingEventsContainer.innerHTML = "";
 
-                                if (targetElement) {
-                                        const header = document.querySelector('header');
-                                        const headerHeight = header?.clientHeight || 0;
-                                        // Add extra padding to ensure content isn't hidden behind header
-                                        const targetPosition = targetElement.offsetTop - headerHeight - 20;
+    this.events.upcoming.sort(
+      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+    );
 
-                                        window.scrollTo({
-                                                top: targetPosition,
-                                                behavior: 'smooth'
-                                        });
-                                }
-                        });
-                });
-        }
+    this.events.upcoming.forEach((event) => {
+      const eventElement = document.createElement("div");
+      eventElement.className = "event-item";
 
-        private setupNavigation(): void {
-                const header = document.querySelector('header') as HTMLElement;
+      const dateElement = document.createElement("h4");
+      dateElement.className = "event-date";
+      dateElement.textContent = event.date;
 
-                window.addEventListener('scroll', () => {
-                        if (window.scrollY > 100) {
-                                header.style.background = 'rgba(0, 0, 0, 0.95)';
-                        } else {
-                                header.style.background = 'rgba(0, 0, 0, 0.9)';
-                        }
-                });
-        }
+      const venueElement = document.createElement("p");
+      venueElement.className = "event-venue";
+      venueElement.style.textAlign = "center";
+      venueElement.textContent = `${event.venue}`;
 
-        private setupEventCards(): void {
-                const eventCards = document.querySelectorAll('.event-card');
+      const lineupElement = document.createElement("p");
+      lineupElement.className = "event-lineup";
 
-                eventCards.forEach((card, index) => {
-                        // Add staggered animation delay
-                        (card as HTMLElement).style.animationDelay = `${index * 0.2}s`;
+      if (event.tba) {
+        lineupElement.style.fontSize = "1.8rem";
+        lineupElement.style.textAlign = "center";
+        lineupElement.textContent = "TBA";
+      } else if (event.lineup && event.lineup.length > 0) {
+        lineupElement.style.whiteSpace = "pre-line";
+        lineupElement.style.fontWeight = "bold";
+        lineupElement.style.textAlign = "center";
+        lineupElement.textContent = `${event.lineup.join("\n").toUpperCase()}`;
+      }
 
-                        // Add click handler for future event details
-                        card.addEventListener('click', () => {
-                                this.showEventDetails(this.events[index]);
-                        });
-                });
-        }
+      eventElement.appendChild(dateElement);
+      eventElement.appendChild(venueElement);
+      eventElement.appendChild(lineupElement);
 
-        private showEventDetails(event: EventData): void {
-                // Simple alert for now - can be enhanced with a modal
-                alert(`Event: ${event.title}\nDate: ${event.date}\nGenre: ${event.genre}\nTime: ${event.time}`);
-        }
+      upcomingEventsContainer.appendChild(eventElement);
+    });
 
-        private setupAnimations(): void {
-                // Intersection Observer for scroll animations
-                const observerOptions = {
-                        threshold: 0.1,
-                        rootMargin: '0px 0px -50px 0px'
-                };
+    const pastEventsContainer = document.getElementById(
+      "past-events-container"
+    );
+    if (!pastEventsContainer) {
+      console.error("Past events container not found!");
+      return;
+    }
+    pastEventsContainer.innerHTML = "";
 
-                const observer = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                                if (entry.isIntersecting) {
-                                        entry.target.classList.add('animate-in');
-                                }
-                        });
-                }, observerOptions);
+    this.events.past.sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
 
-                // Observe elements for animation
-                const animateElements = document.querySelectorAll('.event-card, .about-content, .contact-info');
-                animateElements.forEach(el => observer.observe(el));
-        }
+    this.events.past.forEach((event) => {
+      const eventElement = document.createElement("div");
+      eventElement.className = "event-item";
+
+      const dateElement = document.createElement("h4");
+      dateElement.className = "event-date";
+      dateElement.textContent = event.date;
+
+      const venueElement = document.createElement("p");
+      venueElement.className = "event-venue";
+      venueElement.style.textAlign = "center";
+      venueElement.textContent = `${event.venue}`;
+
+      const lineupElement = document.createElement("p");
+      lineupElement.className = "event-lineup";
+
+      if (event.tba) {
+        lineupElement.style.fontSize = "1.8rem";
+        lineupElement.style.textAlign = "center";
+        lineupElement.textContent = "TBA";
+      } else if (event.lineup && event.lineup.length > 0) {
+        lineupElement.style.whiteSpace = "pre-line";
+        lineupElement.style.fontWeight = "bold";
+        lineupElement.style.textAlign = "center";
+        lineupElement.textContent = `${event.lineup.join("\n").toUpperCase()}`;
+      }
+
+      eventElement.appendChild(dateElement);
+      eventElement.appendChild(venueElement);
+      eventElement.appendChild(lineupElement);
+
+      pastEventsContainer.appendChild(eventElement);
+    });
+  }
 }
 
 // Initialize the app when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-        new PlastykApp();
+document.addEventListener("DOMContentLoaded", () => {
+  const app = new PlastykApp();
+  app.fetchEvents();
 });
-
-// Add CSS animations
-const style = document.createElement('style');
-style.textContent = `
-  .event-card,
-  .about-content,
-  .contact-info {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease;
-  }
-  
-  .animate-in {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-  }
-`;
-document.head.appendChild(style);

@@ -9,28 +9,41 @@
     <link rel="stylesheet" href="/styles/main.css">
 </head>
 
-<body class="w-full h-screen mx-auto font-futura">
-    <div class="flex flex-col items-center justify-evenly h-screen">
-        <header class="flex flex-col items-center justify-center gap-12">
-            <img src="./assets/img/PLASTYK_LOGO_BLACK_RED.png" alt="Plastyk Logo"
-                class="h-24 aspect-auto mx-auto w-auto">
-            <h1 class="text-center text-7xl font-bold font-serif">SAPPHO BY SURGERY
-            </h1>
-        </header>
-        <nav>
-            <ul class="text-3xl">
-                <button class="btn-pink" onclick="window.location.href='https://tickets.plastyk.com'">TICKETS</button>
-                <button class="btn-pink"
-                    onclick="window.location.href='https://www.instagram.com/plastyk__/'">INSTAGRAM</button>
+<body class="w-full h-screen mx-auto font-serif">
+    <header>
+        <h1 class="flex justify-left w-full bg-plastyk-black">
+            <img src="./assets/img/PLASTYK_LOGO_WHITE_RED.png" alt="Plastyk Logo"
+                class="h-auto mt-4 px-2 aspect-auto w-auto ">
+        </h1>
+    </header>
+    <main class="flex flex-col justify-center">
+        <h2 class="flex flex-col items-center gap-12 my-4 text-center text-6xl font-bold font-serif">
+            SAPPHO BY SURGERY
+        </h2>
+        <p class="text-center px-4 text-md">Join the <a href="https://chat.whatsapp.com/K8nD03hBXh9PJ9z0L7h9H0"
+                class="link">WhatsApp group</a> for <b>early bird tickets</b>, <b>secret lineup tea</b> and PLASTYK
+            breaking news.</p>
+        </p>
+        <section id="links" class="flex flex-col items-center font-serif">
+            <ul class="text-3xl flex gap-4">
+                <button class="btn" onclick="window.location.href='https://tickets.plastyk.com'">Tickets</button>
+                <button class="btn"
+                    onclick="window.location.href='https://www.instagram.com/plastyk__/'">Instagram</button>
             </ul>
-        </nav>
-        <main class="flex flex-col items-center justify-center">
-            <button class="btn-pink" onclick="window.location.href='https://chat.whatsapp.com/K8nD03hBXh9PJ9z0L7h9H0'">
-                <i class="fa-brands fa-whatsapp"></i> WHATSAPP
-            </button>
-            <h3 class="text-center text-3xl font-bold">JOIN THE WHATSAPP GROUP FOR EARLY BIRD TICKETS AND SECRET LINEUP
-                TEA
-            </h3>
-        </main>
-    </div>
+            <div class="flex flex-col items-center gap-2">
+            </div>
+        </section>
+        <h3 class="flex flex-col items-center gap-12 my-4 text-center text-5xl font-bold font-serif">
+            UPCOMING
+        </h3>
+        <div id="upcoming-events-container" class="px-4 max-w-4xl mx-auto">
+        </div>
+        <h3 class="flex flex-col items-center gap-12 my-4 text-center text-5xl font-bold font-serif">
+            PAST
+        </h3>
+        <div id="past-events-container" class="px-4 max-w-4xl mx-auto">
+        </div>
+    </main>
 </body>
+
+<script type="module" src="/main.ts"></script>

@@ -16,6 +16,7 @@ export default {
         'plastyk-red-light': '#c73a40',
         'plastyk-pink-light': '#ff9bc4',
         'plastyk-pink-dark': '#e65a8a',
+        'plastyk-blue': '#0000ff',
       },
       fontFamily: {
         'futura': ['"Futura Condensed Extra Bold"', '"Inter"', 'sans-serif'],
