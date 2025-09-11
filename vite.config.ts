@@ -2,10 +2,9 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   root: 'src',
-  publicDir: './src/assets',
+  publicDir: '../src/assets', // Copy assets to dist root
   build: {
     outDir: '../dist',
-    assetsDir: './src/assets',
     sourcemap: true
   },
   server: {

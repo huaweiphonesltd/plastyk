@@ -26,7 +26,7 @@ class PlastykApp {
 
   async fetchEvents() {
     try {
-      const response = await fetch("/assets/events.json");
+      const response = await fetch("./events.json");
       this.events = await response.json();
     } catch (error) {
       console.error("Error fetching events:", error);
@@ -130,7 +130,7 @@ class PlastykApp {
 
   async fetchHeadlines() {
     try {
-      const response = await fetch("/assets/headlines.json");
+      const response = await fetch("./headlines.json");
       this.headlines = await response.json();
     } catch (error) {
       console.error("Error fetching headlines:", error);
