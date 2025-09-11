@@ -7,43 +7,50 @@
     <title>Plastyk - Club Night</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="/styles/main.css">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
 </head>
 
-<body class="w-full h-screen mx-auto font-serif">
-    <header>
-        <h1 class="flex justify-left w-full bg-plastyk-black">
+<body class="w-full h-full mx-auto font-serif bg-plastyk-white">
+    <header class="flex justify-left w-full bg-plastyk-black h-auto">
+        <h1>
             <img src="./assets/img/PLASTYK_LOGO_WHITE_RED.png" alt="Plastyk Logo"
                 class="h-auto mt-4 px-2 aspect-auto w-auto ">
         </h1>
     </header>
     <main class="flex flex-col justify-center">
-        <h2 class="flex flex-col items-center gap-12 my-4 text-center text-6xl font-bold font-serif">
-            SAPPHO BY SURGERY
+        <h2 id="headlines-container"
+            class="flex flex-col items-center gap-12 my-4 text-center text-6xl font-bold font-serif">
         </h2>
         <p class="text-center px-4 text-md">Join the <a href="https://chat.whatsapp.com/K8nD03hBXh9PJ9z0L7h9H0"
                 class="link">WhatsApp group</a> for <b>early bird tickets</b>, <b>secret lineup tea</b> and PLASTYK
             breaking news.</p>
         </p>
         <section id="links" class="flex flex-col items-center font-serif">
-            <ul class="text-3xl flex gap-4">
+            <ul class="text-2xl flex justify-center w-full max-w-2xl gap-4">
                 <button class="btn" onclick="window.location.href='https://tickets.plastyk.com'">Tickets</button>
                 <button class="btn"
                     onclick="window.location.href='https://www.instagram.com/plastyk__/'">Instagram</button>
+                <button class="btn"
+                    onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSdsfU7GJXZpmesmTJFud87ZUmy5lzM8pJgzxFWkt12o73WUaw/viewform'">Complaints</button>
             </ul>
             <div class="flex flex-col items-center gap-2">
             </div>
         </section>
-        <h3 class="flex flex-col items-center gap-12 my-4 text-center text-5xl font-bold font-serif">
+        <h3 class="flex flex-col items-center gap-12 mt-8 text-center text-5xl font-bold font-serif">
             UPCOMING
         </h3>
         <div id="upcoming-events-container" class="px-4 max-w-4xl mx-auto">
         </div>
-        <h3 class="flex flex-col items-center gap-12 my-4 text-center text-5xl font-bold font-serif">
+        <h3 class="flex flex-col items-center gap-12 mt-8 text-center text-5xl font-bold font-serif">
             PAST
         </h3>
         <div id="past-events-container" class="px-4 max-w-4xl mx-auto">
         </div>
     </main>
+    <footer class="flex justify-left w-full bg-plastyk-black h-auto">
+    </footer>
 </body>
 
 <script type="module" src="/main.ts"></script>

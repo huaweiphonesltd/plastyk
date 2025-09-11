@@ -45,6 +45,10 @@
 
 /* Custom component styles using Tailwind utilities */
 @layer components {
+  html {
+    @apply bg-plastyk-black;
+  }
+
   .nav-link {
     @apply text-plastyk-white font-medium transition-colors duration-300 hover:text-plastyk-pink;
   }
@@ -60,9 +64,8 @@
   .link {
     @apply text-plastyk-blue underline;
   }
-
   .btn {
-    @apply text-plastyk-blue border-none py-4 text-2xl font-serif rounded-full cursor-pointer transition-all duration-300  tracking-wider hover:-translate-y-0.5 hover:shadow-lg hover:shadow-plastyk-pink/40 w-24;
+    @apply text-plastyk-blue border-none py-4 font-serif rounded-full cursor-pointer;
     text-decoration: underline;
     text-decoration-skip-ink: none;
     text-underline-offset: 4px;
@@ -98,5 +101,27 @@
 
   .event-lineup {
     @apply text-base text-black;
+  }
+
+  /* Headline rotation animations */
+  .headlines-container {
+    @apply relative;
+    height: 20rem; /* Approximate height for text-6xl */
+  }
+
+  .headline {
+    @apply absolute inset-0 px-12 flex items-center justify-center opacity-0 transform translate-x-full transition-all duration-700;
+  }
+
+  .headline.active {
+    @apply opacity-100 transform translate-x-0;
+  }
+
+  .headline.exit-left {
+    @apply opacity-0 transform -translate-x-full;
+  }
+
+  .headline.enter-right {
+    @apply opacity-100 transform translate-x-full;
   }
 }
