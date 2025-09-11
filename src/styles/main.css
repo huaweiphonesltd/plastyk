@@ -106,22 +106,27 @@
   /* Headline rotation animations */
   .headlines-container {
     @apply relative;
-    height: 20rem; /* Approximate height for text-6xl */
+    height: 20rem; /* Increased height to accommodate full text without clipping */
+    min-height: 8rem; /* Minimum height to prevent layout jumping */
   }
 
   .headline {
-    @apply absolute inset-0 px-12 flex items-center justify-center opacity-0 transform translate-x-full transition-all duration-700;
+    @apply absolute inset-0 px-12 flex items-center justify-center opacity-0 transition-all duration-700;
+    transform: translateX(100%) scale(0.1);
   }
 
   .headline.active {
-    @apply opacity-100 transform translate-x-0;
+    @apply opacity-100;
+    transform: translateX(0) scale(1);
   }
 
   .headline.exit-left {
-    @apply opacity-0 transform -translate-x-full;
+    @apply opacity-0;
+    transform: translateX(-100%) scale(0.1);
   }
 
   .headline.enter-right {
-    @apply opacity-100 transform translate-x-full;
+    @apply opacity-0;
+    transform: translateX(100%) scale(0.1);
   }
 }
