@@ -50,10 +50,9 @@ class PlastykApp {
       const eventElement = document.createElement("div");
       eventElement.className = "event-item";
 
-      const dateElement = document.createElement("p");
+      const dateElement = document.createElement("h4");
       dateElement.className = "event-date";
-      dateElement.style.textAlign = "center";
-      dateElement.textContent = `${event.date}`;
+      dateElement.textContent = event.date;
 
       const venueElement = document.createElement("p");
       venueElement.className = "event-venue";
