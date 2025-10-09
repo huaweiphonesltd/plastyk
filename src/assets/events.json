@@ -1,17 +1,48 @@
 {
   "upcoming": [
     {
-      "date": "October 3 2025",
-      "venue": "M.O.T.",
-      "lineup": ["estoc", "alo3", "karlie marx", "harietta"],
-      "tba": false
-    },
-    {
       "date": "December 19 2025",
       "venue": "M.O.T.",
       "lineup": [""],
       "tba": true
     }
   ],
-  "past": []
+  "past": [ 
+    {
+      "date": "October 3 2025",
+      "venue": "M.O.T.",
+      "lineup": ["estoc", "alo3", "karlie marx", "harietta"],
+      "tba": false
+    },
+    {
+      "date": "August 8 2025",
+      "venue": "M.O.T.",
+      "lineup": ["LO-LOW", "Mo Probs", "karlie marx", "DJ 1000raks", "pumi"],
+      "tba": false
+    },
+    {
+      "date": "June 21 2025",
+      "venue": "M.O.T.",
+      "lineup": ["Hannah Holland", "Michelle Manetti", "karlie marx", "Ayu Mesi", "Cheza Lucina", "DIGITALSAINT", "octi"],
+      "tba": false
+    },
+    {
+      "date": "April 11 2025",
+      "venue": "M.O.T.",
+      "lineup": ["INTROSPEKT", "AZADI.mp3", "karlie marx", "bemmeblu"],
+      "tba": false
+    },
+    {
+      "date": "December 6 2024",
+      "venue": "M.O.T.",
+      "lineup": ["MC Chickaboo", "Rabz", "ASHTREY b2b karlie marx", "Lockhart", "Ayu Mesi", "Bambi", "Doll DJ", "HOLY C", "DJ Taxilla"],
+      "tba": false
+    },
+    {
+      "date": "September 21 2024",
+      "venue": "M.O.T.",
+      "lineup": ["Sister Zo", "Reenie", "karlie marx", "Cheza Lucina"],
+      "tba": false
+    }
+  ]
 }
