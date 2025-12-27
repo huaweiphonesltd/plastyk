@@ -1,13 +1,19 @@
 {
   "upcoming": [
     {
-      "date": "December 19 2025",
+      "date": "March 13 2026",
       "venue": "M.O.T.",
-      "lineup": ["Secret Headliner", "Blood of Marx (Karlie Marx b2b Blood of Aza)", "bemmeblu" ],
+      "lineup": ["Karlie Marx SRS Fundraiser" ],
       "tba": false
     }
   ],
   "past": [ 
+    {
+      "date": "December 19 2025",
+      "venue": "M.O.T.",
+      "lineup": ["Jen Cardini", "Blood of Marx (Karlie Marx b2b Blood of Aza)", "bemmeblu" ],
+      "tba": false
+    },
     {
       "date": "October 3 2025",
       "venue": "M.O.T.",
