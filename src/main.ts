@@ -12,6 +12,12 @@ interface Event {
   tba: boolean;
 }
 
+export interface AccessContent {
+  header: string;
+  explainer: string;
+  units: { title: string; paragraphs: string[] }[];
+}
+
 class PlastykApp {
   constructor() {}
 
@@ -128,6 +134,51 @@ class PlastykApp {
 
       pastEventsContainer.appendChild(eventElement);
     });
+  }
+
+  async fetchAccess() {
+    const container = document.getElementById("venue-access-container");
+    if (!container) return;
+
+    try {
+      const response = await fetch("./access.json");
+      const data: AccessContent = await response.json();
+
+      const heading = document.createElement("h3");
+      heading.className =
+        "flex flex-col items-center gap-12 mt-8 mb-12 px-8 text-center text-5xl font-bold font-serif";
+      heading.textContent = data.header;
+
+      const explainer = document.createElement("p");
+      explainer.className =
+        "px-4 max-w-4xl mx-auto mb-8 text-center text-plastyk-black";
+      explainer.textContent = data.explainer;
+
+      const section = document.createElement("section");
+      section.className =
+        "px-4 max-w-4xl mx-auto mb-12 space-y-8 text-plastyk-black";
+
+      for (const unit of data.units) {
+        const div = document.createElement("div");
+        const h4 = document.createElement("h4");
+        h4.className = "text-2xl font-bold mb-5";
+        h4.textContent = unit.title;
+        div.appendChild(h4);
+        for (let i = 0; i < unit.paragraphs.length; i++) {
+          const p = document.createElement("p");
+          p.className = i < unit.paragraphs.length - 1 ? "mb-3" : "";
+          p.textContent = unit.paragraphs[i];
+          div.appendChild(p);
+        }
+        section.appendChild(div);
+      }
+
+      container.appendChild(heading);
+      container.appendChild(explainer);
+      container.appendChild(section);
+    } catch (error) {
+      console.error("Error fetching access content:", error);
+    }
   }
 
   async fetchHeadlines() {
@@ -340,5 +391,6 @@ class PlastykApp {
 document.addEventListener("DOMContentLoaded", () => {
   const app = new PlastykApp();
   app.fetchEvents();
+  app.fetchAccess();
   app.fetchHeadlines();
 });
