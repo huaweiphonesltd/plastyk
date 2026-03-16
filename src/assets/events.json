@@ -1,13 +1,19 @@
 {
   "upcoming": [
     {
-      "date": "March 13 2026",
-      "venue": "M.O.T.",
-      "lineup": ["Karlie Marx SRS Fundraiser" ],
-      "tba": false
+      "date": "May 16 2026",
+      "venue": "Distillery N17",
+      "lineup": 
+      "tba": true
     }
   ],
   "past": [ 
+    {
+      "date": "March 13 2026",
+      "venue": "M.O.T.",
+      "lineup": ["FAFF", "Michelle Manetti", "Hannah Holland", "I. Jordan", "Blood of Aza", "Vanity Crystal", "Rabz", "S3ba", "Cheza Lucina", "Stav B" ],
+      "tba": false
+    }
     {
       "date": "December 19 2025",
       "venue": "M.O.T.",
