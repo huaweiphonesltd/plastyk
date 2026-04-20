@@ -12,14 +12,30 @@ interface Event {
   tba: boolean;
 }
 
+export interface AccessSubsection {
+  heading: string | null;
+  paragraphs: string[];
+}
+
+export interface AccessSection {
+  title: string;
+  subsections: AccessSubsection[];
+}
+
+export interface AccessVenue {
+  name: string;
+  intro: string | null;
+  sections: AccessSection[];
+}
+
 export interface AccessContent {
   header: string;
   explainer: string;
-  units: { title: string; paragraphs: string[] }[];
+  venues: AccessVenue[];
 }
 
 class PlastykApp {
-  constructor() {}
+  constructor() { }
 
   events: EventListing = {
     upcoming: [],
@@ -141,41 +157,81 @@ class PlastykApp {
     if (!container) return;
 
     try {
-      const response = await fetch("./access.json");
+      const response = await fetch("./access-2026-04-20.json");
       const data: AccessContent = await response.json();
 
+      // Page heading
       const heading = document.createElement("h3");
       heading.className =
         "flex flex-col items-center gap-12 mt-8 mb-12 px-8 text-center text-5xl font-bold font-serif";
       heading.textContent = data.header;
+      container.appendChild(heading);
 
+      // Explainer — preserve newlines
       const explainer = document.createElement("p");
       explainer.className =
-        "px-4 max-w-4xl mx-auto mb-8 text-center text-plastyk-black";
+        "px-4 max-w-4xl mx-auto mb-12 text-center text-plastyk-black whitespace-pre-line";
       explainer.textContent = data.explainer;
-
-      const section = document.createElement("section");
-      section.className =
-        "px-4 max-w-4xl mx-auto mb-12 space-y-8 text-plastyk-black";
-
-      for (const unit of data.units) {
-        const div = document.createElement("div");
-        const h4 = document.createElement("h4");
-        h4.className = "text-2xl font-bold mb-5";
-        h4.textContent = unit.title;
-        div.appendChild(h4);
-        for (let i = 0; i < unit.paragraphs.length; i++) {
-          const p = document.createElement("p");
-          p.className = i < unit.paragraphs.length - 1 ? "mb-3" : "";
-          p.textContent = unit.paragraphs[i];
-          div.appendChild(p);
-        }
-        section.appendChild(div);
-      }
-
-      container.appendChild(heading);
       container.appendChild(explainer);
-      container.appendChild(section);
+
+      // Venues
+      for (const venue of data.venues) {
+        const venueBlock = document.createElement("div");
+        venueBlock.className = "px-4 max-w-4xl mx-auto mb-16";
+
+        // Venue name
+        const venueName = document.createElement("h3");
+        venueName.className = "text-3xl font-bold font-serif mb-4 text-plastyk-black";
+        venueName.textContent = venue.name;
+        venueBlock.appendChild(venueName);
+
+        // Optional venue intro
+        if (venue.intro) {
+          const intro = document.createElement("p");
+          intro.className = "mb-6 text-plastyk-black";
+          intro.textContent = venue.intro;
+          venueBlock.appendChild(intro);
+        }
+
+        // Sections
+        for (const section of venue.sections) {
+          const sectionBlock = document.createElement("div");
+          sectionBlock.className = "mb-8";
+
+          const sectionTitle = document.createElement("h4");
+          sectionTitle.className = "text-xl font-bold mb-3 text-plastyk-black";
+          sectionTitle.textContent = section.title;
+          sectionBlock.appendChild(sectionTitle);
+
+          for (const sub of section.subsections) {
+            const subBlock = document.createElement("div");
+            subBlock.className = "mb-4";
+
+            if (sub.heading) {
+              const subHeading = document.createElement("h5");
+              subHeading.className = "font-semibold mb-1 text-plastyk-black";
+              subHeading.textContent = sub.heading;
+              subBlock.appendChild(subHeading);
+            }
+
+            sub.paragraphs.forEach((text, i) => {
+              const p = document.createElement("p");
+              p.className =
+                i < sub.paragraphs.length - 1
+                  ? "mb-2 text-plastyk-black"
+                  : "text-plastyk-black";
+              p.textContent = text;
+              subBlock.appendChild(p);
+            });
+
+            sectionBlock.appendChild(subBlock);
+          }
+
+          venueBlock.appendChild(sectionBlock);
+        }
+
+        container.appendChild(venueBlock);
+      }
     } catch (error) {
       console.error("Error fetching access content:", error);
     }
